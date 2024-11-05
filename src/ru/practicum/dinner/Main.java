@@ -57,11 +57,15 @@ public class Main {
         ArrayList<String> categoryList = new ArrayList<>();
 
         while (!nextItem.isEmpty()) {
-            categoryList.add(nextItem);
+            if (dc.getMenuMap().containsKey(nextItem)) {
+                categoryList.add(nextItem);
+            } else {
+                System.out.println("категории " + nextItem + " нет в нашем меню");
+            }
+
             nextItem = scanner.nextLine();
         }
 
-        //System.out.println(categoryList.size());
         dc.generateDishCombo(categoryList, numberOfCombos);
     }
 }
